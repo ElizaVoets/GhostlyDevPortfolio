@@ -24,32 +24,132 @@
      <div class="ContentHolder">
         <div class="GameBaseInfo">
             <img src="images/Logos/CloudyTowers.png" alt="">
-            <h2>Title</h2>
+            <h2>Cloudy Towers</h2>
             <p>
-                (description Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iusto aut, nesciunt nostrum voluptates tempore labore iure autem voluptate saepe deleniti nam aperiam, est optio, quas quisquam! Non, adipisci possimus.
-                Recusandae magnam alias vero autem quis harum, iste et, quidem ullam qui eius, molestias earum consectetur iure provident nihil tempore explicabo labore deleniti modi atque est perferendis. Ut, eligendi ea. )<br>
+                This was my project for second year's tower defense assignment. All assets were made
+                by me. This projects was to start learning about principles such as D.R.Y.
+                (don't repeat yourself) and S.R.P. (Single Responsibility)<br>
 
                 <br>
-                Languages:<br>
-                Time Spent:<br>
-                Programs:<br>
-                People:<br>
+                Languages: C#<br>
+                Time Spent: 10 weeks<br>
+                Programs: Unity, Firealpaca, Pixilart.com<br>
+                People: 1, me.<br>
                 <br>
             </p>
         </div>
         <div class="seperator"></div>
         <div class="GameDeepDive">
             
-            <section class="GameSectionImage One">
-                <h3>Subtitle</h3>
+            <section class="GameSectionImage">
+                <h3>Enemy</h3>
+                <img src="images/PageContent/CloudyTowers/Videos/CloudMovement.gif" alt="">
+                <p>
+                    For the enemies, I chose to make thunderclouds that will try to get rid of the sunny weather.
+                    These enemies go to their new position using waypoints that have been stored in a list. The asset was made by me with pixilart.com 
+                    The original idea for my game was to add a twist of horror for it, so the original idea for my enemy was something ominous. Something that could be
+                    cute, but is not cute at all in it's context. That plan didn't go through because I had less time than I had expected. compared to my skill 
+                    level at the time.</p>
+            </section>
+            <section class="GameSectionImage">
+                <img src="images/PageContent/CloudyTowers/EnemyScripts/EnemySpawning.png" alt="">
+                <p>
+                    we want to spawn the enemy before we can make it move in the first
+                    place. Since I wanted a delay between when an enemy is 
+                    spawned after the other, I used an IEnumerator. 
+                    This decision was made because it doesn't block the game like a 'Thread.Sleep()' would. 
+                    The IEnumerator, ensures the game remains responsive and performs other tasks while it waits for the delay to complete.
+                    <br><br>In update, we first check how much time has passed by subtracting 'Time.DeltaTime' 
+                    from the 'timeBetweenDelay' variable I have declared in the class. This is 3 by standard. If the variable hits 0, 
+                    it starts the Co-routine, and instantiates the enemy.
+                    </p>
+            </section>
+            <section class="GameSection">
+                <p>
+                    then, I made a script called WaypointScript. This script uses an array that collects every waypoint that is a child of the waypoint holder,
+                    which is an empty game object in the level itsself.
+                    The reason behind this is so I didn't have to manually add every waypoint to the array. 
+                    Instead, I used a for loop which checks how many children there are in an array. This is for a DRY principle. (Don't Repeat Yourself).
+                    This array will be used in another script, which is the cloud movement.
+                </p>
+            </section>
+
+
+            <section class="GameSectionImage">
+                <img src="images/PageContent/CloudyTowers/EnemyScripts/EnemyMovement.png" alt="">
+                <p>
+
+                </p>
+            </section>
+            <section class="GameSection">
+                <p>To make the cloud move towards a certain direction, 
+                    I first needed to get the first waypoint of the array. 
+                    That was done by grabbing the array itsself. 
+                    That automatically starts at 0. 
+                    The WaypointVector is defined by finding the distance between the cloud and the waypoint. 
+                    If it is close enough to the waypoint, the index gets increased in the if-statement.
+                
+                    <br><br>In the 'OnTriggerEnter2D' function, it checks if it collides with the last waypoint, and it destroys the object.
+                    </p>
+            </section>
+
+            <section class="GameSection">
+                <p>
+                    then, I made a script called WaypointScript. This script uses an array that collects every waypoint that is a child of the waypoint holder,
+                    which is an empty game object in the level itsself.
+                    The reason behind this is so I didn't have to manually add every waypoint to the array. 
+                    Instead, I used a for loop which checks how many children there are in an array. This is for a DRY principle. (Don't Repeat Yourself).
+                    This array will be used in another script, which is the cloud movement.
+                </p>
+            </section>
+
+            <section class="GameSectionImage AtkSpire">
+                <img src="images/PageContent/CloudyTowers/EnemyScripts/EnemyAttacking.png" alt="">
+                <p>
+                    To make the sunspire get damaged, they just have to pass the asset on the map.
+                    I did this by putting a collission on the stormclouds passing over the path and
+                    checking if it isn't a neutralized cloud anymore, and if the tag of the item it
+                    collided with is "sunspire"<br><br>
+
+                    from there, i grab the global data's (global data = a script that stores all important
+                    data, e.g. Currency Amount, etc.) spire health and subtract the damage variable from
+                    it.
+                </p>
+            </section>
+            <section class="GameSectionImage EnemyDeath">
+                <img src="images/PageContent/CloudyTowers/EnemyScripts/EnemyDeathVS.png" alt="">
+            </section>
+            <section class="GameSection">
+                <p>
+                    To be able to neutralize the clouds, and ensure the weather remains sunny,
+                    we need to be able to "kill" the cloud. First, we get the health from the enemy
+                    stats. When we have that completed, we check if the bullet collides with the enemy,
+                    we remove the amount of damage from the health, and we destroy the bullet <br><br>
+
+                    After that, we check if the health is equal to, or below 0, we give the player
+                    one point, set the "HasDied" boolean (true or false) to true, and we change the sprite
+                    to the neutralized cloud, also changing it's tag to "neutralized"
+                </p>
+                
+            </section>
+            <br>
+            <section class="GameSectionImage Tower">
+            <h3>The tower (player)</h3>
                 <img src="images/PageContent/CloudyTowers/Videos/BuyTowerGif.gif" alt="">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel hic recusandae eius id ratione. Repellat labore quam modi, illum aperiam culpa doloribus minus nam ducimus officia incidunt totam unde veritatis!
-                    Nisi dicta, iusto ut quaerat pariatur quod magni facere commodi. Cumque impedit consequatur animi, ab accusantium vero aliquid assumenda praesentium saepe? Harum error nam, molestias ullam non expedita dignissimos qui.
-                    Dignissimos soluta itaque at dolorem aperiam nesciunt dolorum quisquam neque pariatur cum unde, culpa, qui consequatur. 
+                    Of course, to protect your precious sunlight, you can buy towers. A lot goes on behind the scenes of this tower,
+                    which I will be explaining. 
+                    <br><br>
+                    Originally, I wanted to add three phases. A broken tower, A tower in construction, and a repaired tower. 
+                    Due to the lack of time by the time I wanted to make more towers, I sadly didn't have the chance to. 
+                    <br><br>
+                    You can buy as many towers as you want, and you can upgrade each of them. 
+                    Looking back, I would have definitely done it a different way. But this only gives me the want to possibly re-make the game. 
+                    keep an eye out for that :D 
+                </p>
             </section>
-            <section class="GameSection">
-                
+            
+           <!-- <section class="GameSection">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel hic recusandae eius id ratione. Repellat labore quam modi, illum aperiam culpa doloribus minus nam ducimus officia incidunt totam unde veritatis!
                     Nisi dicta, iusto ut quaerat pariatur quod magni facere commodi. Cumque impedit consequatur animi, ab accusantium vero aliquid assumenda praesentium saepe? Harum error nam, molestias ullam non expedita dignissimos qui.
@@ -57,16 +157,7 @@
                     Pariatur odio, unde sint culpa expedita ad accusamus inventore veniam dolore voluptates tempore voluptatum consequuntur illum? Ab, rerum nobis? Qui officiis consectetur enim eaque a esse neque totam odit eligendi?
                     Explicabo placeat quisquam adipisci ea atque deserunt, tempora voluptate quam ex ut molestiae modi autem illum inventore eum error commodi? Maiores maxime tenetur saepe sequi deleniti consequuntur ea minus neque.
                 </p>
-            </section>
-            <section class="GameSection">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel hic recusandae eius id ratione. Repellat labore quam modi, illum aperiam culpa doloribus minus nam ducimus officia incidunt totam unde veritatis!
-                    Nisi dicta, iusto ut quaerat pariatur quod magni facere commodi. Cumque impedit consequatur animi, ab accusantium vero aliquid assumenda praesentium saepe? Harum error nam, molestias ullam non expedita dignissimos qui.
-                    Dignissimos soluta itaque at dolorem aperiam nesciunt dolorum quisquam neque pariatur cum unde, culpa, qui consequatur. Voluptatum natus placeat, fuga tempore voluptates omnis ducimus, explicabo velit ea accusamus, ipsa voluptate?
-                    Pariatur odio, unde sint culpa expedita ad accusamus inventore veniam dolore voluptates tempore voluptatum consequuntur illum? Ab, rerum nobis? Qui officiis consectetur enim eaque a esse neque totam odit eligendi?
-                    Explicabo placeat quisquam adipisci ea atque deserunt, tempora voluptate quam ex ut molestiae modi autem illum inventore eum error commodi? Maiores maxime tenetur saepe sequi deleniti consequuntur ea minus neque.
-                </p>
-            </section>
+            </section>-->
         </div>
      </div>
      <footer></footer>

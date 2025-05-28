@@ -485,8 +485,7 @@ footer {
 }
 
 .GameBaseInfo{
-	
-	height: 500px;
+	height: 550px;
 }
 
 .GameBaseInfo > img{
@@ -510,16 +509,19 @@ footer {
 }
 
 .GameDeepDive{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	height: 5000px;
 
 }
 
 .GameSection{
-	height: 350px;
+	height: 200px;
 }
 
 .GameSectionImage{
-	height: 350px;
+	height: 450px;
 }
 
 .GameSectionImage, .GameSection {
@@ -534,21 +536,22 @@ footer {
 }
 
 .GameSection > h3, .GameSectionImage > h3{
+	position: relative;
 	font-size: 55px;
-	left: 25px;
-	top: 25px;
+	left: 0px;
+	top: -15px;
 }
 
 .GameSectionImage > img{
 	height: 300px;
-	top: 100px;
-	left: 25px;
+	
+
 }
 
 .GameSection > p, .GameSectionImage > p{
 	position: absolute;
 	font-size: 35px;
-	top: 50px;
+	top: 0px;
 	right: 25px;
 }
 
@@ -556,6 +559,13 @@ footer {
 	left: 600px;
 }
 
+.FemkeLink{
+	color: #fecea4;
+}
+
+.Tower{
+	margin-top: 150px;
+}
 
 @media (max-width: 2560px){
 	.menu.active{
@@ -709,7 +719,7 @@ footer {
 		font-size: 26px;
 		width: 350px;
 		left: 0px;
-		top: 350px
+		top: 400px;
 	}
 
 	.GameBaseInfo > h2{
@@ -718,10 +728,11 @@ footer {
 	}
 
 	.GameSection{
-		height: 550px;
+		height: 500px;
 	}
+
 	.GameSectionImage{
-		height: 550px;
+		height: 525px;
 	}
 	.GameSectionImage > img{
 		height: 200px;
@@ -730,6 +741,7 @@ footer {
 	.menu.active{
 		top: 8vh;
 	}
+
 
 }
 
@@ -743,6 +755,17 @@ footer {
 	.MenuButton{
 		width: 42.5px;
 		height: 42.5px;
+	}
+	
+	.Spawner1{
+		height: 570px;
+	}
+	.Spawner2{
+		height: 250px;
+	}
+
+	.MoveToWP{
+		height: 300px;
 	}
 }
 
