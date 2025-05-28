@@ -10,19 +10,20 @@
 	font-family: WitchPumpkin;
 	overflow: visible;
 	list-style: none;
-	color: var(--Text-color)
+	color: var(--Text-color);
+	letter-spacing: 1.5px;
 }
 :root {
 	--Primary-color: #B76E79;
 	--Text-color: #F2E1DA;
-	--Second-color: #D8A29E;
+	--Second-color: #c47d83d8;
 	--Third-color: #643A4C;
 	--Fourth-color: #f0c08631;
 	--Header-color: #8d4f5c;
 }
 body {
 	height: 100%;
-	width: 100%;
+	width: 100vw;
 	background: linear-gradient(to bottom,var(--Primary-color),var(--Third-color));
 	background-repeat: no-repeat;
 }
@@ -108,12 +109,15 @@ header>h1 {
 .ContentHolder {
 	position: relative;
 	margin: auto;
-	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
 	top: 11vh;
 	padding: 5px;
 	height: 95%;
 	width: 80%;
-	background-color: #d8a29e82;
+	background-color: var(--Second-color);
 	z-index: 0
 }
 .AboutMe>button,.seperator {
@@ -339,16 +343,16 @@ footer {
 }
 
 .GameHolderTop > h2{
-	font-size: 75px;
+	font-size: 70px;
 	position: absolute;
-	right: 75px;
-	width: 300px;
+	right: 25px;
+	width: 350px;
 	
 }
 .GameHolderDescription{
 	position: absolute;
 	display: flex;
-	right: 250px;
+	right: 225px;
 	top: 25%;
 	font-size: 30px;
 }
@@ -377,19 +381,218 @@ footer {
 
 /* ================================ About me ================================ */ 
 
+.AboutmePageHolder{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.AboutmePageHolder > *{
+	width: 80%;
+	font-weight: 550;
+}
+
+.AboutMeIntroduction{
+	position: relative;
+	width: 80%;
+	height: 500px;
+	display: flex;
+	justify-self: center;
+}
+
+.AboutMeIntroduction > *, .mainInfo > *{
+	position: relative;
+}
+
+.AboutMeIntroduction > h2{
+	font-size: 65px;
+	left: 205px;
+	top: 15px;
+}
+
+.AboutMeIntroduction > p{
+	font-size: 35px;
+	top: 75px;
+}
+
+.AboutMeIntroduction > img{
+	background-color: rebeccapurple;
+	width: 350px;
+	height: 450px;
+	top: 25px;
+}
+
+.mainInfo{
+	position: relative;
+	width: 80%;
+	height: 1750px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.mainInfo > *{
+	margin-bottom: 5px;
+	width: 80%;
+	display: flex;
+}
+
+.mainInfo > h2{
+	font-size: 65px;
+}
+
+.mainInfo > h3{
+	font-size: 50px;
+}
+
+.mainInfo > .MoreAboutMe{
+	height: 700px;
+
+}
+
+.mainInfo > .HobbyContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+}
+
+.MoreAboutMe > p{
+	font-size: 30px;
+}
+
+.HobbyContainer > .Hobby{
+	width: 100%;
+	height: 200px;
+}
+
+.Hobby > h4{
+	font-size: 40px;
+}
+
+.Hobby > p{
+	font-size: 30px;
+}
 
 
+/* Game Pages*/
+
+.GameBaseInfo, .GameDeepDive{
+	position: relative;
+	width: 90%;
+}
+
+.GameBaseInfo{
+	
+	height: 500px;
+}
+
+.GameBaseInfo > img{
+	position: absolute;
+	width: 375px;
+	top: 65px;
+}
+
+.GameBaseInfo > h2{
+	position: absolute;
+	top: 35px;
+	left: 400px;
+	font-size: 65px;
+}
+
+.GameBaseInfo > p{
+	position: absolute;
+	font-size: 35px;
+	left: 400px;
+	top: 100px;
+}
+
+.GameDeepDive{
+	height: 5000px;
+
+}
+
+.GameSection{
+	height: 350px;
+}
+
+.GameSectionImage{
+	height: 350px;
+}
+
+.GameSectionImage, .GameSection {
+	position: relative;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.GameSection > *{
+	position: absolute;
+	
+}
+
+.GameSection > h3, .GameSectionImage > h3{
+	font-size: 55px;
+	left: 25px;
+	top: 25px;
+}
+
+.GameSectionImage > img{
+	height: 300px;
+	top: 100px;
+	left: 25px;
+}
+
+.GameSection > p, .GameSectionImage > p{
+	position: absolute;
+	font-size: 35px;
+	top: 50px;
+	right: 25px;
+}
+
+.GameSectionImage > p{
+	left: 600px;
+}
 
 
+@media (max-width: 2560px){
+	.menu.active{
+		top: 10.45vh;
+	}
+}
 
+@media (max-width: 1440px){
+	.GameBaseInfo{
+		height: 600px;
+	}
 
-@media (max-width: 1200px) {
+	.GameSectionImage{
+		height: 550px;
+	}
+	.GameSection{
+		height: 450px;
+	}
+
+	.menu.active{
+		top: 10vh;
+	}
+
+}
+
+@media (max-width: 1046px) {
+	
 	.AboutMe>Button{
 		position: absolute;
 		bottom: 50px;
 	}
 	header{
 		width: 100%;
+	}
+	.ContentHolder{
+		top: 8.5vh;
+
 	}
 	.pillartop--left{
 		display: none;
@@ -399,5 +602,158 @@ footer {
 	}
 	.menu.active{
 		top: 9.5vh;
+	}
+
+	.MenuButton{
+		width: 55px;
+		height: 55px;
+		font-size: 100%;
+	}
+
+	.GameBaseInfo{
+		height: 400px;
+	}
+
+	.GameBaseInfo > p{
+		font-size: 20px;
+	}
+
+	.GameBaseInfo > img{
+		width: 300px;
+	}
+
+	.GameSectionImage{
+		height: 250px;
+	}
+
+	.GameSectionImage > p, .GameSection > p{
+		font-size: 20px;
+
+	}
+
+	.GameSectionImage > p{
+		width: 350px;
+		left: 400px;
+	}
+
+	.GameSectionImage > img{
+		width: 375px;
+		height: 200px;
+	}
+	.GameSection{
+		height: 250px;
+	}
+
+
+}
+
+@media (max-width: 768px){
+	.GameBaseInfo{
+		
+		height: 400px;
+	}
+
+	.GameBaseInfo > p{
+		font-size: 20px;
+		width: 300px;
+		left: 250px;
+	}
+
+	.GameBaseInfo > h2{
+		left: 250px;
+	}
+
+	.GameBaseInfo > img{
+		width: 200px;
+	}
+
+	.GameSectionImage{
+		height: 550px;
+	}
+
+	.GameSectionImage > p, .GameSection > p{
+		font-size: 20px;
+
+	}
+
+	.GameSectionImage > p{
+		position: relative;
+		width: 350px;
+		left: 0px;
+		
+	}
+
+	.GameSectionImage > img{
+		width: 450px;
+		height: 250px;
+	}
+	.GameSection{
+		height: 275px;
+	}
+}
+@media (max-width: 426px){
+	body{
+		width: 100vw;
+	}
+
+	.MenuButton{
+		width: 45px;
+		height: 45px;
+	}
+
+	.GameBaseInfo{
+		height: 800px;
+	}
+
+	.GameBaseInfo > p{
+		font-size: 26px;
+		width: 350px;
+		left: 0px;
+		top: 350px
+	}
+
+	.GameBaseInfo > h2{
+		left: 0;
+		top: 275px
+	}
+
+	.GameSection{
+		height: 550px;
+	}
+	.GameSectionImage{
+		height: 550px;
+	}
+	.GameSectionImage > img{
+		height: 200px;
+	}
+
+	.menu.active{
+		top: 8vh;
+	}
+
+}
+
+@media (max-width: 376px){
+	.GameSection{
+		height: 600px;
+	}
+	.GameSectionImage > img{
+		height: 150px;
+	}
+	.MenuButton{
+		width: 42.5px;
+		height: 42.5px;
+	}
+}
+
+@media (max-width: 321px){
+	.GameBaseInfo{
+		height: 900px;
+	}
+	.GameSection{
+		height:750px;
+	}
+	.GameSectionImage > img{
+		height: 150px;
 	}
 }
